@@ -38,6 +38,7 @@ public interface SpringApplicationRunListener {
 	/**
 	 * Called immediately when the run method has first started. Can be used for very
 	 * early initialization.
+	 * 当run方法第一次启动时立即调用。可以用于非常早期的初始化。
 	 */
 	default void starting() {
 	}
@@ -45,7 +46,8 @@ public interface SpringApplicationRunListener {
 	/**
 	 * Called once the environment has been prepared, but before the
 	 * {@link ApplicationContext} has been created.
-	 * @param environment the environment
+	 * @param environment the
+	 *     ConfigurableEnvironment 准备妥当，允许将其调整
 	 */
 	default void environmentPrepared(ConfigurableEnvironment environment) {
 	}
@@ -54,6 +56,7 @@ public interface SpringApplicationRunListener {
 	 * Called once the {@link ApplicationContext} has been created and prepared, but
 	 * before sources have been loaded.
 	 * @param context the application context
+	 * ConfigurableApplicationContext    准备妥当，允许将其调整
 	 */
 	default void contextPrepared(ConfigurableApplicationContext context) {
 	}
@@ -62,6 +65,7 @@ public interface SpringApplicationRunListener {
 	 * Called once the application context has been loaded but before it has been
 	 * refreshed.
 	 * @param context the application context
+	 *  ConfigurableApplicationContext 已装载，但仍未启动
 	 */
 	default void contextLoaded(ConfigurableApplicationContext context) {
 	}
@@ -72,6 +76,7 @@ public interface SpringApplicationRunListener {
 	 * ApplicationRunners} have not been called.
 	 * @param context the application context.
 	 * @since 2.0.0
+	 * ConfigurableApplicationContext已启动，此时springbean 已初始化完成
 	 */
 	default void started(ConfigurableApplicationContext context) {
 	}
@@ -82,6 +87,7 @@ public interface SpringApplicationRunListener {
 	 * {@link ApplicationRunner ApplicationRunners} have been called.
 	 * @param context the application context.
 	 * @since 2.0.0
+	 * spring正在运行
 	 */
 	default void running(ConfigurableApplicationContext context) {
 	}
@@ -92,6 +98,7 @@ public interface SpringApplicationRunListener {
 	 * the context was created
 	 * @param exception the failure
 	 * @since 2.0.0
+	 * spring运行失败
 	 */
 	default void failed(ConfigurableApplicationContext context, Throwable exception) {
 	}
